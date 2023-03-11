@@ -1,0 +1,13 @@
+app:
+  datasource:
+    main:
+      driver-class-name: org.postgresql.Driver
+      jdbc-url: jdbc:postgresql://localhost:5432/postgres-exercise-app
+      password: 'posgres1'
+      username: postgres
+      pool-size: 30
+
+server:
+  error:
+    include-binding-errors: always
+    include-messages: always
