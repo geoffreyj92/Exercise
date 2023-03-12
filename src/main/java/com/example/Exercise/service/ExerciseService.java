@@ -1,9 +1,11 @@
 package com.example.Exercise.service;
 
+import com.example.Exercise.ExerciseApplication;
 import com.example.Exercise.model.Exercise;
 //import com.example.Exercise.repo.ExerciseRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -25,7 +27,7 @@ public class ExerciseService {
     private RestTemplate restTemplate;
 
 
-    public Object allExcercises(String name) {
+    public List<Exercise> allExcercises(String name) {
         try {
 
             HttpHeaders headers = new HttpHeaders();
@@ -34,7 +36,8 @@ public class ExerciseService {
 
             //Get call to the API
 
-            ResponseEntity<String> response = restTemplate.exchange(url + name, HttpMethod.GET, new HttpEntity<>(headers), String.class);
+            ResponseEntity<List<Exercise>> response = restTemplate.exchange(url + name, HttpMethod.GET, new HttpEntity<>(headers), new ParameterizedTypeReference<List<Exercise>>() {
+            });
 
             log.info("response from api: {}", response.getBody());
 

@@ -1,5 +1,5 @@
 
-create table exercise (
+create table if not exists exercise (
     id int NOT NULL,
     exercise_name VARCHAR(50) NOT NULL,
     type VARCHAR(50) NOT NULL,
