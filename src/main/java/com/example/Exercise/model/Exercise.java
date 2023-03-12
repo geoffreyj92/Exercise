@@ -1,18 +1,23 @@
 package com.example.Exercise.model;
 
+import org.springframework.data.annotation.Id;
+
 import java.util.Objects;
 
 public class Exercise {
 
-    private String name;
+    @Id
+    private Integer id;
+    private String exerciseName;
     private String type;
     private String muscle;
     private String equipment;
     private String difficulty;
     private String instructions;
 
-    public Exercise(String name, String type, String muscle, String equipment, String difficulty, String instructions) {
-        this.name = name;
+    public Exercise(Integer id, String name, String type, String muscle, String equipment, String difficulty, String instructions) {
+        this.id = id;
+        this.exerciseName = name;
         this.type = type;
         this.muscle = muscle;
         this.equipment = equipment;
@@ -23,12 +28,20 @@ public class Exercise {
     public Exercise() {
     }
 
-    public String getName() {
-        return name;
+    public Integer getId() {
+        return id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getExerciseName() {
+        return exerciseName;
+    }
+
+    public void setExerciseName(String exerciseName) {
+        this.exerciseName = exerciseName;
     }
 
     public String getType() {
@@ -76,18 +89,19 @@ public class Exercise {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Exercise exercise = (Exercise) o;
-        return name.equals(exercise.name) && type.equals(exercise.type) && muscle.equals(exercise.muscle) && equipment.equals(exercise.equipment) && difficulty.equals(exercise.difficulty) && instructions.equals(exercise.instructions);
+        return id.equals(exercise.id) && exerciseName.equals(exercise.exerciseName) && type.equals(exercise.type) && muscle.equals(exercise.muscle) && equipment.equals(exercise.equipment) && difficulty.equals(exercise.difficulty) && instructions.equals(exercise.instructions);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, type, muscle, equipment, difficulty, instructions);
+        return Objects.hash(id, exerciseName, type, muscle, equipment, difficulty, instructions);
     }
 
     @Override
     public String toString() {
         return "Exercise{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + exerciseName + '\'' +
                 ", type='" + type + '\'' +
                 ", muscle='" + muscle + '\'' +
                 ", equipment='" + equipment + '\'' +

@@ -1,6 +1,7 @@
 
+
 create table if not exists exercise (
-    id int NOT NULL,
+    id BIGSERIAL NOT NULL,
     exercise_name VARCHAR(50) NOT NULL,
     type VARCHAR(50) NOT NULL,
     muscle VARCHAR(50) NOT NULL,

@@ -37,7 +37,7 @@ public class ExerciseController {
     public List<Exercise> saveExercises(@RequestBody Exercise exercise, @PathVariable String name) {
         List<Exercise> exerciseList = exerciseService.allExcercises(name);
         if (exerciseList.size() == 0) {
-            exercise.setName("");
+            exercise.setExerciseName("");
             exercise.setDifficulty("");
             exercise.setType("");
             exercise.setEquipment("");

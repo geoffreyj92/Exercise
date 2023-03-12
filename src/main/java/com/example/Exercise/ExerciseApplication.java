@@ -11,8 +11,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.List;
-
 @SpringBootApplication
 public class ExerciseApplication {
 
@@ -27,16 +25,26 @@ public class ExerciseApplication {
 		return new RestTemplate();
 	}
 
-	CommandLineRunner commandLineRunner(ExerciseService exerciseService, String name, ExerciseRepository repository) {
+//	@Bean
+//	CommandLineRunner commandLineRunner(ExerciseService exerciseService, String name, ExerciseRepository repository) {
+//		return args -> {
+//			List<Exercise> exerciseList = exerciseService.allExcercises(name);
+//			LOG.info("Exercises saved {} to the database", exerciseList.size());
+//
+//			repository.saveAll(exerciseList);
+//
+//
+//
+//		};
+//	}
+
+	@Bean
+	CommandLineRunner commandLineRunner(ExerciseRepository exercise) {
 		return args -> {
-			List<Exercise> exerciseList = exerciseService.allExcercises(name);
-			LOG.info("Exercises saved {} to the database", exerciseList.size());
-
-			repository.saveAll(exerciseList);
-
-
+			exercise.save(new Exercise(null, "monday", "strength", "biceps", "dumbbells", "beginner", "stay seated and curl the weight"));
 
 		};
+
 	}
 
 }
