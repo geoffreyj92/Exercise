@@ -1,10 +1,14 @@
 package com.example.Exercise.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.stereotype.Component;
+
 import java.time.LocalDate;
 import java.util.Objects;
-
+@Component
 public class Workout {
 
+    @Id
     private Integer id;
     private String name;
     private LocalDate date;

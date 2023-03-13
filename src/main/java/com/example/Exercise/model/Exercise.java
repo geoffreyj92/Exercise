@@ -1,6 +1,8 @@
 package com.example.Exercise.model;
 
+import lombok.Generated;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.sql.In;
 
 import java.util.Objects;
 
@@ -14,9 +16,9 @@ public class Exercise {
     private String equipment;
     private String difficulty;
     private String instructions;
-    private String workoutId;
+    private Integer workoutId;
 
-    public Exercise(Integer id, String name, String type, String muscle, String equipment, String difficulty, String instructions, String workoutId) {
+    public Exercise(Integer id, String name, String type, String muscle, String equipment, String difficulty, String instructions, Integer workoutId) {
         this.id = id;
         this.exerciseName = name;
         this.type = type;
@@ -86,11 +88,11 @@ public class Exercise {
         this.instructions = instructions;
     }
 
-    public String getWorkoutId() {
+    public Integer getWorkoutId() {
         return workoutId;
     }
 
-    public void setWorkoutId(String workoutId) {
+    public void setWorkoutId(Integer workoutId) {
         this.workoutId = workoutId;
     }
 
