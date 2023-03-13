@@ -41,7 +41,7 @@ public class ExerciseApplication {
 	@Bean
 	CommandLineRunner commandLineRunner(ExerciseRepository exercise) {
 		return args -> {
-			exercise.save(new Exercise(null, "monday", "strength", "biceps", "dumbbells", "beginner", "stay seated and curl the weight"));
+			exercise.save(new Exercise(null, "monday", "strength", "biceps", "dumbbells", "beginner", "stay seated and curl the weight", null));
 
 		};
 

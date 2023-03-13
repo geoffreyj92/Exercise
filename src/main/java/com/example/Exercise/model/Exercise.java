@@ -14,8 +14,9 @@ public class Exercise {
     private String equipment;
     private String difficulty;
     private String instructions;
+    private String workoutId;
 
-    public Exercise(Integer id, String name, String type, String muscle, String equipment, String difficulty, String instructions) {
+    public Exercise(Integer id, String name, String type, String muscle, String equipment, String difficulty, String instructions, String workoutId) {
         this.id = id;
         this.exerciseName = name;
         this.type = type;
@@ -23,6 +24,7 @@ public class Exercise {
         this.equipment = equipment;
         this.difficulty = difficulty;
         this.instructions = instructions;
+        this.workoutId = workoutId;
     }
 
     public Exercise() {
@@ -84,29 +86,38 @@ public class Exercise {
         this.instructions = instructions;
     }
 
+    public String getWorkoutId() {
+        return workoutId;
+    }
+
+    public void setWorkoutId(String workoutId) {
+        this.workoutId = workoutId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Exercise exercise = (Exercise) o;
-        return id.equals(exercise.id) && exerciseName.equals(exercise.exerciseName) && type.equals(exercise.type) && muscle.equals(exercise.muscle) && equipment.equals(exercise.equipment) && difficulty.equals(exercise.difficulty) && instructions.equals(exercise.instructions);
+        return id.equals(exercise.id) && exerciseName.equals(exercise.exerciseName) && type.equals(exercise.type) && muscle.equals(exercise.muscle) && equipment.equals(exercise.equipment) && difficulty.equals(exercise.difficulty) && instructions.equals(exercise.instructions) && workoutId.equals(exercise.workoutId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, exerciseName, type, muscle, equipment, difficulty, instructions);
+        return Objects.hash(id, exerciseName, type, muscle, equipment, difficulty, instructions, workoutId);
     }
 
     @Override
     public String toString() {
         return "Exercise{" +
                 "id=" + id +
-                ", name='" + exerciseName + '\'' +
+                ", exerciseName='" + exerciseName + '\'' +
                 ", type='" + type + '\'' +
                 ", muscle='" + muscle + '\'' +
                 ", equipment='" + equipment + '\'' +
                 ", difficulty='" + difficulty + '\'' +
                 ", instructions='" + instructions + '\'' +
+                ", workoutId='" + workoutId + '\'' +
                 '}';
     }
 }
