@@ -1,43 +1,51 @@
 package com.example.Exercise.model;
 
-import lombok.Generated;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.sql.In;
 
 import java.util.Objects;
 
 public class Exercise {
 
     @Id
-    private Integer id;
+    private Integer exerciseId;
     private String exerciseName;
     private String type;
     private String muscle;
     private String equipment;
     private String difficulty;
     private String instructions;
-    private Integer workoutId;
+    private Integer workId;
 
-    public Exercise(Integer id, String name, String type, String muscle, String equipment, String difficulty, String instructions, Integer workoutId) {
-        this.id = id;
+    public Exercise(Integer exerciseId, String exerciseName, String type, String muscle, String equipment, String difficulty, String instructions) {
+        this.exerciseId = exerciseId;
+        this.exerciseName = exerciseName;
+        this.type = type;
+        this.muscle = muscle;
+        this.equipment = equipment;
+        this.difficulty = difficulty;
+        this.instructions = instructions;
+    }
+
+    public Exercise(Integer exerciseId, String name, String type, String muscle, String equipment, String difficulty, String instructions, Integer workId) {
+        this.exerciseId = exerciseId;
         this.exerciseName = name;
         this.type = type;
         this.muscle = muscle;
         this.equipment = equipment;
         this.difficulty = difficulty;
         this.instructions = instructions;
-        this.workoutId = workoutId;
+//        this.workoutId = workoutId;
     }
 
     public Exercise() {
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getExerciseId() {
+        return exerciseId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setExerciseId(Integer exerciseId) {
+        this.exerciseId = exerciseId;
     }
 
     public String getExerciseName() {
@@ -88,12 +96,12 @@ public class Exercise {
         this.instructions = instructions;
     }
 
-    public Integer getWorkoutId() {
-        return workoutId;
+    public Integer getWorkId() {
+        return workId;
     }
 
-    public void setWorkoutId(Integer workoutId) {
-        this.workoutId = workoutId;
+    public void setWorkId(Integer workId) {
+        this.workId = workId;
     }
 
     @Override
@@ -101,25 +109,25 @@ public class Exercise {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Exercise exercise = (Exercise) o;
-        return id.equals(exercise.id) && exerciseName.equals(exercise.exerciseName) && type.equals(exercise.type) && muscle.equals(exercise.muscle) && equipment.equals(exercise.equipment) && difficulty.equals(exercise.difficulty) && instructions.equals(exercise.instructions) && workoutId.equals(exercise.workoutId);
+        return exerciseId.equals(exercise.exerciseId) && exerciseName.equals(exercise.exerciseName) && type.equals(exercise.type) && muscle.equals(exercise.muscle) && equipment.equals(exercise.equipment) && difficulty.equals(exercise.difficulty) && instructions.equals(exercise.instructions) && workId.equals(exercise.workId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, exerciseName, type, muscle, equipment, difficulty, instructions, workoutId);
+        return Objects.hash(exerciseId, exerciseName, type, muscle, equipment, difficulty, instructions, workId);
     }
 
     @Override
     public String toString() {
         return "Exercise{" +
-                "id=" + id +
+                "id=" + exerciseId +
                 ", exerciseName='" + exerciseName + '\'' +
                 ", type='" + type + '\'' +
                 ", muscle='" + muscle + '\'' +
                 ", equipment='" + equipment + '\'' +
                 ", difficulty='" + difficulty + '\'' +
                 ", instructions='" + instructions + '\'' +
-                ", workoutId='" + workoutId + '\'' +
+                ", workoutId='" + workId + '\'' +
                 '}';
     }
 }

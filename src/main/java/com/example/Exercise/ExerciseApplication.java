@@ -14,6 +14,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.List;
 
 @SpringBootApplication
@@ -30,26 +31,38 @@ public class ExerciseApplication {
 		return new RestTemplate();
 	}
 
+	@Bean
+	CommandLineRunner commandLineRunner(ExerciseService exerciseService, ExerciseRepository repository) {
+		return args -> {
+
+			List<Exercise> exerciseList = exerciseService.allExcercises();
+			LOG.info("Exercises saved {} to the database", exerciseList.size());
+
+			repository.saveAll(exerciseList);
+
+
+
+		};
+	}
+
 //	@Bean
-//	CommandLineRunner commandLineRunner(ExerciseService exerciseService, String name, ExerciseRepository repository) {
+//	CommandLineRunner commandLineRunner1(WorkoutRepository workout) {
 //		return args -> {
-//			List<Exercise> exerciseList = exerciseService.allExcercises(name);
-//			LOG.info("Exercises saved {} to the database", exerciseList.size());
-//
-//			repository.saveAll(exerciseList);
-//
-//
-//
+//			workout.save(new Workout(null, "biceps", true, LocalDate.of(2023, Month.MARCH, 13)));
+//			LOG.info("Workout added to the DB");
 //		};
 //	}
+//
+//	@Bean
+//	CommandLineRunner commandLineRunner(ExerciseRepository exercise, WorkoutRepository workoutRepository, Workout workout) {
+//		return args -> {
+//			exercise.save(new Exercise(null, "monday", "strength", "biceps", "dumbbells", "beginner", "stay seated and curl the weight", 1));
+////			workoutRepository.save(new Workout(null, "back", LocalDate.now(), true));
+//			LOG.info("Exercise added to the DB");
+//		};
+//
+//	}
 
-	@Bean
-	CommandLineRunner commandLineRunner(ExerciseRepository exercise, WorkoutRepository workoutRepository, Workout workout) {
-		return args -> {
-			exercise.save(new Exercise(null, "monday", "strength", "biceps", "dumbbells", "beginner", "stay seated and curl the weight", workout.getId()));
-			workoutRepository.save(new Workout(null, "back", LocalDate.now(), true));
-		};
 
-	}
 
 }

@@ -26,7 +26,7 @@ public class ExerciseService {
     @Autowired
     private RestTemplate restTemplate;
 
-
+    @Autowired
     public List<Exercise> allExcercises(String name) {
         try {
 

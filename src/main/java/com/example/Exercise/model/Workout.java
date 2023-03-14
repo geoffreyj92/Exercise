@@ -9,51 +9,53 @@ import java.util.Objects;
 public class Workout {
 
     @Id
-    private Integer id;
-    private String name;
-    private LocalDate date;
-    private boolean complete;
+    private Integer workoutId;
+    private String workoutName;
+    private boolean completed;
+    private LocalDate workoutDate;
 
-    public Workout(Integer id, String name, LocalDate date, boolean complete) {
-        this.id = id;
-        this.name = name;
-        this.date = date;
-        this.complete = complete;
+
+    public Workout(Integer workoutId, String workoutName, boolean completed, LocalDate workoutDate) {
+        this.workoutId = workoutId;
+        this.workoutName = workoutName;
+        this.completed = completed;
+        this.workoutDate = workoutDate;
+
     }
 
     public Workout() {
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getWorkoutId() {
+        return workoutId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setWorkoutId(Integer workoutId) {
+        this.workoutId = workoutId;
     }
 
-    public String getName() {
-        return name;
+    public String getWorkoutName() {
+        return workoutName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setWorkoutName(String workoutName) {
+        this.workoutName = workoutName;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public LocalDate getWorkoutDate() {
+        return workoutDate;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setWorkoutDate(LocalDate workoutDate) {
+        this.workoutDate = workoutDate;
     }
 
     public boolean isComplete() {
-        return complete;
+        return completed;
     }
 
-    public void setComplete(boolean complete) {
-        this.complete = complete;
+    public void setCompleted(boolean complete) {
+        this.completed = complete;
     }
 
     @Override
@@ -61,21 +63,21 @@ public class Workout {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Workout workout = (Workout) o;
-        return complete == workout.complete && id.equals(workout.id) && name.equals(workout.name) && date.equals(workout.date);
+        return completed == workout.completed && workoutId.equals(workout.workoutId) && workoutName.equals(workout.workoutName) && workoutDate.equals(workout.workoutDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, date, complete);
+        return Objects.hash(workoutId, workoutName, workoutDate, completed);
     }
 
     @Override
     public String toString() {
         return "Workout{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", date=" + date +
-                ", complete=" + complete +
+                "id=" + workoutId +
+                ", name='" + workoutName + '\'' +
+                ", date=" + workoutDate +
+                ", complete=" + completed +
                 '}';
     }
 }
